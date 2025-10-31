@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="pascalgui.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="47" Y="21"/>
+        <UsageCount Value="71"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="entity.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Entity"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="76"/>
+        <CursorPos X="5" Y="89"/>
+        <UsageCount Value="71"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="nameofkey.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NameOfKey"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="29" Y="6"/>
+        <UsageCount Value="64"/>
+      </Unit>
+      <Unit>
+        <Filename Value="gameenums.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameEnums"/>
+        <CursorPos X="54" Y="15"/>
+        <UsageCount Value="63"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="imageutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ImageUtils"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="306"/>
+        <CursorPos X="40" Y="320"/>
+        <UsageCount Value="61"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tilegrid.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TileGrid"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="58"/>
+        <CursorPos X="3" Y="63"/>
+        <UsageCount Value="35"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ugame.pas"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UGame"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="34"/>
+        <CursorPos X="12" Y="110"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/opt/lazarus/lcl/include/fpimagebitmap.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="127"/>
+        <CursorPos Y="141"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/opt/lazarus/lcl/include/picture.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="703"/>
+        <CursorPos Y="718"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/opt/lazarus/lcl/intfgraphics.pas"/>
+        <UnitName Value="IntfGraphics"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="253"/>
+        <CursorPos X="25" Y="263"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/4.2.0/lcl/graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="54"/>
+        <CursorPos X="3" Y="59"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/packages/fcl-image/src/fpimage.pp"/>
+        <UnitName Value="FPImage"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="763"/>
+        <CursorPos X="26" Y="389"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/4.2.0/lcl/include/rasterimage.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="539"/>
+        <CursorPos Y="554"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="28">
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="265" Column="9" TopLine="252"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="267" Column="30" TopLine="252"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="223" Column="13" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="268" Column="9" TopLine="249"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="270" Column="29" TopLine="255"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="268" Column="30" TopLine="252"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="269" Column="42" TopLine="252"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="223" Column="13" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="251" Column="31" TopLine="239"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="259" Column="15" TopLine="246"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="244" Column="18" TopLine="240"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="275" Column="31" TopLine="251"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="273" Column="28" TopLine="252"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="266" Column="18" TopLine="242"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="280" Column="5" TopLine="262"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="25" Column="75"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="233" Column="84" TopLine="220"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="242" Column="10" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="25" Column="97"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="327" Column="3" TopLine="304"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="313" Column="43" TopLine="285"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="326" Column="28" TopLine="303"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="322" Column="3" TopLine="305"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="317" Column="38" TopLine="305"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="319" Column="7" TopLine="306"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="317" TopLine="306"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="322" Column="25" TopLine="308"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="242" Column="40" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="323" Column="25" TopLine="308"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

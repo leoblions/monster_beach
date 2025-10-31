@@ -1,0 +1,134 @@
+unit UGame;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, Entity, LCLType, LCLIntf,NameOfKey;
+
+type
+
+  { TForm1 }
+
+  TGame = class(TForm)
+    Label1: TLabel;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: integer);
+    procedure FormMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: integer);
+    procedure FormResize(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+
+  private
+    FrameTimer: TTimer; // drawing
+    TickTimer: TTimer;  // update or tick game logic
+
+    procedure OnTimer(Sender: TObject);
+    procedure Tick(Sender: TObject);
+  protected
+    procedure Paint; override;
+  public
+    Player: GEntity;
+    constructor CreateNew(Aowner: TComponent; Num: integer = 0); override;
+
+
+  end;
+
+var
+  Game: TGame;
+  playerX, playerY: integer;
+
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+constructor TGame.CreateNew(Aowner: TComponent; Num: integer);
+begin
+  inherited CreateNew(AOwner, Num);
+  Player := GEntity.Create(Self, 0, 10, 10, 0);
+  Width := 500;
+  Height := 500;
+  Caption := 'A1 IMPALER';
+  DoubleBuffered := True;
+  // frame loop
+  FrameTimer := TTimer.Create(Self);
+  FrameTimer.Interval := 1000 div 60;
+  FrameTimer.OnTimer := @Self.OnTimer;
+  // game loop
+  TickTimer := TTimer.Create(Self);
+  TickTimer.Interval := 1000 div 15;
+  TickTimer.OnTimer := @Self.Tick;
+  //playerX := 0;
+  //playerY := 0;
+end;
+
+procedure TGame.OnTimer(Sender: TObject);   // each frame
+begin
+  Invalidate;  // calling invalidate triggers onpaint
+end;
+
+procedure TGame.Paint;
+var
+  SquareSize, X, Y: integer;
+begin
+  Canvas.Brush.Color := clWhite;
+  Canvas.FillRect(ClientRect);
+  SquareSize := 20;
+  X := (ClientWidth - SquareSize) div 2;
+  Y := (ClientHeight - SquareSize) div 2;
+  Canvas.Brush.Color := clRed;
+  Canvas.FillRect(Rect(Player.WorldX, Player.WorldY, Player.WorldX +
+    SquareSize, Player.WorldY + SquareSize));
+  Player.Draw();
+  Player.WorldX += 1;
+end;
+
+procedure TGame.Tick(Sender: TObject);
+var
+  Sender1: TObject;
+begin
+  ;
+end;
+
+procedure TGame.Label1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TGame.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+begin
+  WriteLn(Key.toString());
+  WriteLn(GetKeyName(Key));
+
+
+end;
+
+procedure TGame.FormMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: integer);
+begin
+
+end;
+
+procedure TGame.FormMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: integer);
+begin
+
+end;
+
+procedure TGame.FormResize(Sender: TObject);
+begin
+
+end;
+
+procedure TGame.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+
+end;
+
+end.
