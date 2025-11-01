@@ -18,8 +18,12 @@ type
   TForm1 = class(TForm)
     Label1: TLabel;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
-    procedure FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: char);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    //procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    //procedure FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+    //procedure KeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: integer);
     procedure FormMouseUp(Sender: TObject; Button: TMouseButton;
@@ -79,6 +83,8 @@ begin
   TickTimer.Interval := 1000 div 15;
   TickTimer.OnTimer := @Self.Tick;
 
+
+
 end;
 
 procedure TForm1.OnTimer(Sender: TObject);   // each frame
@@ -124,29 +130,34 @@ begin
 
 end;
 
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
-begin
-  WriteLn(Key.toString());
-  WriteLn(GetKeyName(Key));
-  if TShiftStateEnum.ssLeft in Shift then
-     PlayerMotion.ShiftIsHeld := True
-  else
-      PlayerMotion.ShiftIsHeld := False;
-  PlayerMotion.SetDirection(Key);
+//procedure TForm1.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+//begin
+//  //WriteLn(Key.toString());
+//  //WriteLn(GetKeyName(Key));
+//  //if TShiftStateEnum.ssLeft in Shift then
+//  //   PlayerMotion.ShiftIsHeld := True
+//  //else
+//  //    PlayerMotion.ShiftIsHeld := False;
+//  WriteLn(Key.toString());
+//  PlayerMotion.HandleKey(Key,true);
+//
+//
+//end;
 
 
-end;
-
-procedure TForm1.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
-begin
-  if TShiftStateEnum.ssLeft in Shift then
-     PlayerMotion.ShiftIsHeld := True
-  else
-      PlayerMotion.ShiftIsHeld := False ;
-  PlayerMotion.KeyUp(Key);
-
-
-end;
+//procedure TForm1.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+//begin
+//  //if TShiftStateEnum.ssLeft in Shift then
+//  //   PlayerMotion.ShiftIsHeld := True
+//  //else
+//  //    PlayerMotion.ShiftIsHeld := False ;
+//  PlayerMotion.HandleKey(Key,false);
+//  //Writeln('keyup ',getkeyname(key));
+//  //WriteLn(GetKeyName(Key));
+//  WriteLn(Key.toString());
+//
+//
+//end;
 
 procedure TForm1.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: integer);
@@ -168,6 +179,24 @@ end;
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
 
+end;
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+  );
+begin
+  PlayerMotion.HandleKey(Key,True);
+
+end;
+
+procedure TForm1.FormKeyPress(Sender: TObject; var Key: char);
+begin
+
+end;
+
+procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  PlayerMotion.HandleKey(Key,false);
+  WriteLn(Key.tostring);
 end;
 
 end.

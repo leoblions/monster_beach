@@ -11,6 +11,8 @@ object Form1: TForm1
   LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  OnKeyUp = FormKeyUp
   OnMouseDown = FormMouseDown
   OnMouseUp = FormMouseUp
   OnResize = FormResize

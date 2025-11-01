@@ -34,7 +34,7 @@ type
   public
     WorldX, WorldY, VelX, VelY: Integer;
     Height, Width: Integer;
-    Kind, State, Frame: Integer;
+    Kind, TState, Frame: Integer;
     constructor Create(aGame:TForm; aNum , aWorldX, aWorldY, aKind : Integer);
     procedure Draw();
     procedure Update();
@@ -144,6 +144,8 @@ begin
 
   WorldX += velX;
   WorldY += velY;
+  VelX :=0;
+  VelY := 0;
   if velX > 0 then
    PlayerImages := PlayerImagesRight
    else if velX < 0 then

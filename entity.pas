@@ -144,6 +144,7 @@ begin
 
   WorldX += velX;
   WorldY += velY;
+
   if velX > 0 then
    PlayerImages := PlayerImagesRight
    else if velX < 0 then
