@@ -7,19 +7,19 @@
       <Unit>
         <Filename Value="monster_beach.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="35" Y="19"/>
-        <UsageCount Value="144"/>
+        <EditorIndex Value="8"/>
+        <CursorPos X="3" Y="15"/>
+        <UsageCount Value="171"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="entity.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Entity"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="125"/>
-        <CursorPos X="3" Y="147"/>
-        <UsageCount Value="144"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="154"/>
+        <CursorPos X="22" Y="168"/>
+        <UsageCount Value="171"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -28,14 +28,14 @@
         <UnitName Value="NameOfKey"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="29" Y="6"/>
-        <UsageCount Value="137"/>
+        <UsageCount Value="164"/>
       </Unit>
       <Unit>
         <Filename Value="gameenums.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameEnums"/>
         <CursorPos X="6" Y="15"/>
-        <UsageCount Value="136"/>
+        <UsageCount Value="163"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -44,16 +44,16 @@
         <UnitName Value="ImageUtils"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="365"/>
-        <UsageCount Value="134"/>
+        <UsageCount Value="161"/>
       </Unit>
       <Unit>
         <Filename Value="tilegrid.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="TileGrid"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="79"/>
-        <CursorPos X="20" Y="83"/>
-        <UsageCount Value="108"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="77"/>
+        <CursorPos X="5" Y="109"/>
+        <UsageCount Value="135"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -63,10 +63,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UGame"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="172"/>
-        <CursorPos X="34" Y="187"/>
-        <UsageCount Value="28"/>
+        <TopLine Value="133"/>
+        <CursorPos X="3" Y="133"/>
+        <UsageCount Value="55"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -74,11 +75,10 @@
         <Filename Value="uplayermotion.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UPlayerMotion"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="111"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="105"/>
         <CursorPos X="16" Y="132"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="116"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -86,14 +86,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="127"/>
         <CursorPos Y="141"/>
-        <UsageCount Value="1"/>
-      </Unit>
-      <Unit>
-        <Filename Value="/opt/lazarus/lcl/include/picture.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="703"/>
-        <CursorPos Y="718"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="8"/>
       </Unit>
       <Unit>
         <Filename Value="/opt/lazarus/lcl/intfgraphics.pas"/>
@@ -101,7 +94,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="253"/>
         <CursorPos X="25" Y="263"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="1"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/4.2.0/lcl/graphics.pp"/>
@@ -109,7 +102,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="3" Y="59"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="2"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/packages/fcl-image/src/fpimage.pp"/>
@@ -117,14 +110,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="763"/>
         <CursorPos X="26" Y="389"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="1"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/4.2.0/lcl/include/rasterimage.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="511"/>
         <CursorPos Y="526"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="3"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/4.2.0/lcl/intfgraphics.pas"/>
@@ -132,73 +125,43 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3618"/>
         <CursorPos X="14" Y="3636"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="1"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/4.2.0/lcl/include/picture.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="777"/>
         <CursorPos Y="768"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="1"/>
+      </Unit>
+      <Unit>
+        <Filename Value="filestringutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FileStringUtils"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="21"/>
+        <UsageCount Value="42"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uheadsup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UHeadsUp"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="42"/>
+        <CursorPos X="41" Y="56"/>
+        <UsageCount Value="39"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ugame.lfm"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="entity.pas"/>
-        <Caret Line="37" Column="12" TopLine="24"/>
-      </Position>
-      <Position>
-        <Filename Value="uplayermotion.pas"/>
-        <Caret Line="159" Column="19" TopLine="131"/>
-      </Position>
-      <Position>
-        <Filename Value="uplayermotion.pas"/>
-        <Caret Line="116" Column="18" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="uplayermotion.pas"/>
-        <Caret Line="31" Column="42" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="ugame.pas"/>
-        <Caret Line="23" Column="15" TopLine="2"/>
-      </Position>
-      <Position>
-        <Filename Value="ugame.pas"/>
-        <Caret Line="154" Column="27" TopLine="126"/>
-      </Position>
-      <Position>
-        <Filename Value="ugame.pas"/>
-        <Caret Line="142" Column="2" TopLine="129"/>
-      </Position>
-      <Position>
-        <Filename Value="monster_beach.lpr"/>
-        <Caret Line="25" Column="36"/>
-      </Position>
-      <Position>
-        <Filename Value="ugame.pas"/>
-        <Caret Line="139" Column="19" TopLine="136"/>
-      </Position>
-      <Position>
-        <Filename Value="ugame.pas"/>
-        <Caret Line="186" Column="3" TopLine="161"/>
-      </Position>
-      <Position>
-        <Filename Value="ugame.pas"/>
-        <Caret Line="192" Column="3" TopLine="167"/>
-      </Position>
-      <Position>
-        <Filename Value="uplayermotion.pas"/>
-        <Caret Line="60" Column="52" TopLine="44"/>
-      </Position>
-      <Position>
-        <Filename Value="uplayermotion.pas"/>
-        <Caret Line="59" Column="8" TopLine="44"/>
-      </Position>
-      <Position>
-        <Filename Value="uplayermotion.pas"/>
-        <Caret Line="45" Column="32" TopLine="29"/>
-      </Position>
       <Position>
         <Filename Value="uplayermotion.pas"/>
         <Caret Line="44" Column="32" TopLine="29"/>
@@ -262,6 +225,62 @@
       <Position>
         <Filename Value="uplayermotion.pas"/>
         <Caret Line="120" Column="13" TopLine="105"/>
+      </Position>
+      <Position>
+        <Filename Value="filestringutils.pas"/>
+        <Caret Column="21"/>
+      </Position>
+      <Position>
+        <Filename Value="filestringutils.pas"/>
+        <Caret Line="19" Column="59" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="16" Column="23" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="17" Column="60" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="monster_beach.lpr"/>
+        <Caret Line="13" Column="71"/>
+      </Position>
+      <Position>
+        <Filename Value="tilegrid.pas"/>
+        <Caret Line="83" Column="20" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="uheadsup.pas"/>
+        <Caret Line="18" Column="34"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="112" Column="3" TopLine="101"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="47" Column="14" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="11" Column="102" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="113" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="133" Column="3" TopLine="141"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="134" Column="3" TopLine="151"/>
+      </Position>
+      <Position>
+        <Filename Value="ugame.pas"/>
+        <Caret Line="133" Column="3" TopLine="133"/>
       </Position>
     </JumpHistory>
     <RunParams>

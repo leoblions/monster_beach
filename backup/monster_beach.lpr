@@ -10,8 +10,8 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms,Entity, NameOfKey, GameEnums, UGame, TileGrid, UPlayerMotion
-  { you can add units after this };
+  Forms, Entity, NameOfKey, GameEnums, UGame, TileGrid, UPlayerMotion,
+  FileStringUtils, UHeadsUp;
 
 {$R *.res}
 
@@ -22,7 +22,7 @@ begin
   Application.MainFormOnTaskbar:=True;
   {$POP}
   Application.Initialize;
-  Application.CreateForm(  TForm1, Form1);
+  Application.CreateForm(  TForm1, Game);
   Application.Run;
 end.
 

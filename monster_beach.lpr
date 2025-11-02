@@ -10,8 +10,9 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms,Entity, NameOfKey, GameEnums, UGame, TileGrid, UPlayerMotion
-  { you can add units after this };
+  Forms, Entity, NameOfKey, GameEnums, UGame, TileGrid, UPlayerMotion,
+  FileStringUtils, UHeadsUp
+  ;
 
 {$R *.res}
 

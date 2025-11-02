@@ -71,6 +71,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UPlayerMotion"/>
       </Unit>
+      <Unit>
+        <Filename Value="filestringutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FileStringUtils"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uheadsup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UHeadsUp"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

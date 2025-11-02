@@ -8,7 +8,6 @@ object Form1: TForm1
   ClientHeight = 500
   ClientWidth = 500
   Position = poScreenCenter
-  LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
@@ -16,12 +15,13 @@ object Form1: TForm1
   OnMouseDown = FormMouseDown
   OnMouseUp = FormMouseUp
   OnResize = FormResize
-  object Label1: TLabel
+  object LevelLabel: TLabel
     Left = 8
     Height = 16
     Top = 8
-    Width = 28
-    Caption = 'TEST'
-    OnClick = Label1Click
+    Width = 79
+    Color = clRed
+    ParentColor = False
+    OnClick = LevelLabelClick
   end
 end

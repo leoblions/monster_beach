@@ -8,28 +8,30 @@ interface
 
 uses
   TileGrid,Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Entity, LCLType, LCLIntf,NameOfKey,GameEnums,UPlayerMotion;
+  ExtCtrls, Entity, LCLType, LCLIntf,NameOfKey,GameEnums,UPlayerMotion, Generics.Collections,UHeadsUp;
 const
      FRAME_MAX = 60;
 type
+  // used to store settings
+  TStrIntDictionary = specialize TDictionary<string, Integer >;
+  TStrStrDictionary = specialize TDictionary<string, string >;
 
   { TForm1 }
-
+  // parent GUI element, and trunk for game components
   TForm1 = class(TForm)
-    Label1: TLabel;
+    LevelLabel: TLabel;
+
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-    //procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
-    //procedure FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
-    //procedure KeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: integer);
     procedure FormMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: integer);
     procedure FormResize(Sender: TObject);
-    procedure Label1Click(Sender: TObject);
+    procedure LevelLabelClick(Sender: TObject);
 
   private
     FrameTimer: TTimer; // drawing
@@ -42,6 +44,7 @@ type
     procedure Paint; override;
   public
     Player: TEntity;
+    HeadsUp: THeadsUp;
     TileGrid: TTileGrid;
     Frame:Integer;
     PlayerMotion:TPlayerMotion;
@@ -68,6 +71,7 @@ begin
   inherited CreateNew(AOwner, Num);
   Player := TEntity.Create(Self, 0, 10, 10, 0);
   TileGrid := TTileGrid.Create(self,0,10,10,0);
+  HeadsUp := THeadsUp.Create(Self);
   PlayerMotion := TPlayerMotion.Create(Self,Self.Player);
   Width := 500;
   Height := 500;
@@ -104,13 +108,11 @@ var
 begin
   Canvas.Brush.Color := clWhite;
   Canvas.FillRect(ClientRect);
- // SquareSize := 20;
- // X := (ClientWidth - SquareSize) div 2;
- // Y := (ClientHeight - SquareSize) div 2;
- // Canvas.Brush.Color := clRed;
- // Canvas.FillRect(Rect(Player.WorldX, Player.WorldY, Player.WorldX + SquareSize, Player.WorldY + SquareSize));
- TileGrid.Draw();
+
+  TileGrid.Draw();
+  HeadsUp.Draw();
   Player.Draw();
+
 
 end;
 
@@ -123,41 +125,15 @@ begin
   TileGrid.Update;
   Player.Update;
   PlayerMotion.Update();
+  HeadsUp.Update();
 end;
 
-procedure TForm1.Label1Click(Sender: TObject);
+procedure TForm1.LevelLabelClick(Sender: TObject);
 begin
 
 end;
 
-//procedure TForm1.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
-//begin
-//  //WriteLn(Key.toString());
-//  //WriteLn(GetKeyName(Key));
-//  //if TShiftStateEnum.ssLeft in Shift then
-//  //   PlayerMotion.ShiftIsHeld := True
-//  //else
-//  //    PlayerMotion.ShiftIsHeld := False;
-//  WriteLn(Key.toString());
-//  PlayerMotion.HandleKey(Key,true);
-//
-//
-//end;
 
-
-//procedure TForm1.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
-//begin
-//  //if TShiftStateEnum.ssLeft in Shift then
-//  //   PlayerMotion.ShiftIsHeld := True
-//  //else
-//  //    PlayerMotion.ShiftIsHeld := False ;
-//  PlayerMotion.HandleKey(Key,false);
-//  //Writeln('keyup ',getkeyname(key));
-//  //WriteLn(GetKeyName(Key));
-//  WriteLn(Key.toString());
-//
-//
-//end;
 
 procedure TForm1.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: integer);
