@@ -28,7 +28,7 @@ type
   public
 
     constructor Create(aGame: TForm; aNum, aWorldX, aWorldY, aKind: integer);
-    procedure Draw();
+    procedure Draw(Panel:TPanel);
     procedure Update();
 
 
@@ -79,7 +79,7 @@ begin
   //WorldX +=1;
 end;
 
-procedure TTileGrid.Draw();
+procedure TTileGrid.Draw(Panel:TPanel);
 var
   SquareSize: integer;
   Canvas: TCanvas;
@@ -87,7 +87,7 @@ var
 begin
 
   //SquareSize := 20;
-  Canvas := Game.Canvas;
+  Canvas := Panel.Canvas;
   for y := 0 to 24 do
     for x := 0 to 24 do
     begin

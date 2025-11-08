@@ -360,7 +360,8 @@ var
 begin
   // Create source interface image from original PNG
   SrcImg := TLazIntfImage.Create(0, 0);
-  writeln('handle allocated ',Source.HandleAllocated);
+  //writeln('handle allocated ',Source.HandleAllocated);
+
   SrcImg.LoadFromBitmap(Source.Handle, Source.MaskHandle);
 
   // Create destination interface image with same dimensions and pixel format

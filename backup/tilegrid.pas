@@ -92,7 +92,7 @@ begin
     for x := 0 to 24 do
     begin
       Value := Grid[y, x];
-      if Assigned(TileBitmap) & (Value = 0) then
+      if Assigned(TileBitmap) and (Value = 0) then
       begin
         ScreenX := x * TileSize;
         ScreenY := y * TileSize;

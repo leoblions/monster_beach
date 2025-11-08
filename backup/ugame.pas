@@ -20,7 +20,6 @@ type
   // parent GUI element, and trunk for game components
   TForm1 = class(TForm)
     LevelLabel: TLabel;
-    GamePanel: TPanel;
 
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

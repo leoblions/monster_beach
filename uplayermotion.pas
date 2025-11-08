@@ -28,7 +28,6 @@ type
     ShiftIsHeld:Bool;
     Up,Down,Left,Right: Bool;
     constructor Create(aGame: TForm; aPlayer: TEntity);
-    procedure SetDirection(Key:Word);
     procedure HandleKey(Key:Word; isDown: bool);
     procedure MovePlayer();
     procedure Update();
@@ -69,35 +68,7 @@ begin
 
 end;
 
-procedure TPlayerMotion.SetDirection(Key:Word);
-var
-  KeyValue :Integer;
-  CurrentSpeed : Integer;
-begin
-  //CurrentSpeed := PLAYER_WALK_SPEED;
-  //if ShiftIsHeld then
-  //   CurrentSpeed +=2;
-  //KeyValue := Ord(Key);
-  //case KeyValue of
-  //VK_UP:
-  //  begin
-  //    Up := True;
-  //  end;
-  //VK_DOWN:
-  //  begin
-  //    Down:=True;
-  //  end;
-  //VK_LEFT:
-  //  begin
-  //    Left:=True;
-  //  end;
-  //VK_RIGHT:
-  //  begin
-  //  Right :=True;
-  //  end;
-  //end;
 
-end;
 
 procedure TPlayerMotion.HandleKey(Key:Word; isDown: bool);
 var
@@ -178,8 +149,8 @@ if AttenuateCounter < ATTENUATE_COUNTER_RATE then
   else
   begin
   AttenuateCounter :=0;
-  Attenuate(Player.velX);
-  Attenuate(Player.velY);
+  Attenuate(Player.VelX);
+  Attenuate(Player.VelY);
   end;
 end;
 
@@ -191,25 +162,25 @@ begin
 
   if MoveFlags[0] and not MoveFlags[4] then
   begin
-    Player.velY := -PLAYER_WALK_SPEED;
+    Player.FvelY := -PLAYER_WALK_SPEED;
     Down := False;
   end;
 
   if MoveFlags[1] and not MoveFlags[5] then
   begin
-    Player.velY := PLAYER_WALK_SPEED;
+    Player.FvelY := PLAYER_WALK_SPEED;
     Up := False;
   end;
 
   if MoveFlags[2] and not MoveFlags[6] then
   begin
-    Player.velX := -PLAYER_WALK_SPEED;
+    Player.FvelX := -PLAYER_WALK_SPEED;
     Right := False;
   end;
 
   if MoveFlags[3] and not MoveFlags[7] then
   begin
-    Player.velX := PLAYER_WALK_SPEED;
+    Player.FvelX := PLAYER_WALK_SPEED;
     Left := False;
   end;
 
@@ -217,25 +188,25 @@ begin
 
     if not MoveFlags[0] and MoveFlags[4] then
   begin
-    Player.velY := -0;
+    Player.FvelY := -0;
     Down := False;
   end;
 
   if not MoveFlags[1] and MoveFlags[5] then
   begin
-    Player.velY := 0;
+    Player.FvelY := 0;
     Up := False;
   end;
 
   if not MoveFlags[2] and MoveFlags[6] then
   begin
-    Player.velX := -0;
+    Player.FvelX := -0;
     Right := False;
   end;
 
   if not MoveFlags[3] and MoveFlags[7] then
   begin
-    Player.velX := 0;
+    Player.FvelX := 0;
     Left := False;
   end;
 

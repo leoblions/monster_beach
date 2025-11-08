@@ -125,11 +125,11 @@ begin
     begin
      DirectionIndexPart:=1;
     end;
-  VK_LEFT:
+  VK_LEFT,VK_A:
     begin
       DirectionIndexPart:=2;
     end;
-  VK_RIGHT:
+  VK_RIGHT,VK_D:
     begin
     DirectionIndexPart:=3;
     end;
@@ -178,8 +178,8 @@ if AttenuateCounter < ATTENUATE_COUNTER_RATE then
   else
   begin
   AttenuateCounter :=0;
-  Attenuate(Player.velX);
-  Attenuate(Player.velY);
+  Attenuate(Player.VelX);
+  Attenuate(Player.VelY);
   end;
 end;
 
@@ -191,25 +191,25 @@ begin
 
   if MoveFlags[0] and not MoveFlags[4] then
   begin
-    Player.velY := -PLAYER_WALK_SPEED;
+    Player.FvelY := -PLAYER_WALK_SPEED;
     Down := False;
   end;
 
   if MoveFlags[1] and not MoveFlags[5] then
   begin
-    Player.velY := PLAYER_WALK_SPEED;
+    Player.FvelY := PLAYER_WALK_SPEED;
     Up := False;
   end;
 
   if MoveFlags[2] and not MoveFlags[6] then
   begin
-    Player.velX := -PLAYER_WALK_SPEED;
+    Player.FvelX := -PLAYER_WALK_SPEED;
     Right := False;
   end;
 
   if MoveFlags[3] and not MoveFlags[7] then
   begin
-    Player.velX := PLAYER_WALK_SPEED;
+    Player.FvelX := PLAYER_WALK_SPEED;
     Left := False;
   end;
 
@@ -217,25 +217,25 @@ begin
 
     if not MoveFlags[0] and MoveFlags[4] then
   begin
-    Player.velY := -0;
+    Player.FvelY := -0;
     Down := False;
   end;
 
   if not MoveFlags[1] and MoveFlags[5] then
   begin
-    Player.velY := 0;
+    Player.FvelY := 0;
     Up := False;
   end;
 
   if not MoveFlags[2] and MoveFlags[6] then
   begin
-    Player.velX := -0;
+    Player.FvelX := -0;
     Right := False;
   end;
 
   if not MoveFlags[3] and MoveFlags[7] then
   begin
-    Player.velX := 0;
+    Player.FvelX := 0;
     Left := False;
   end;
 

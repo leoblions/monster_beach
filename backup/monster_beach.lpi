@@ -34,9 +34,9 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="entity.pas"/>
+        <Filename Value="player.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Entity"/>
+        <UnitName Value="Player"/>
       </Unit>
       <Unit>
         <Filename Value="nameofkey.pas"/>
@@ -67,11 +67,6 @@
         <UnitName Value="UGame"/>
       </Unit>
       <Unit>
-        <Filename Value="uplayermotion.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="UPlayerMotion"/>
-      </Unit>
-      <Unit>
         <Filename Value="filestringutils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FileStringUtils"/>
@@ -80,6 +75,11 @@
         <Filename Value="uheadsup.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UHeadsUp"/>
+      </Unit>
+      <Unit>
+        <Filename Value="entity.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Entity"/>
       </Unit>
     </Units>
   </ProjectOptions>

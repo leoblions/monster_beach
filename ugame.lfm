@@ -8,6 +8,7 @@ object Form1: TForm1
   ClientHeight = 500
   ClientWidth = 500
   Position = poScreenCenter
+  LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress

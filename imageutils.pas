@@ -25,6 +25,7 @@ function cutSpritesheetPNG(inputPNG: TPortableNetworkGraphic;
 function ExtractTransparentSubPNG(Source: TPortableNetworkGraphic;
   startX, startY, Width, Height: integer): TPortableNetworkGraphic;
 function FlipXPNG(Source: TPortableNetworkGraphic): TPortableNetworkGraphic;
+function ResizePNG(Source: TPortableNetworkGraphic; aNewWidth, aNewHeight:Integer): TPortableNetworkGraphic;
 
 implementation
 
@@ -384,6 +385,64 @@ begin
       //  continue;
       DestX := Width - SrcX -1;
       DestY := SrcY;
+      MyTFPColor := SrcImg.Colors[SrcX, SrcY];
+      MyColor.red := MyTFPColor.Red;
+      MyColor.green := MyTFPColor.green;
+      MyColor.blue := MyTFPColor.blue;
+      MyColor.alpha := MyTFPColor.alpha;
+      DstImg.Colors[DestX, DestY] := MyColor;
+    end;
+  end;
+
+
+  // Create the output PNG and assign the copied bitmap
+
+  CopiedPNG := TPortableNetworkGraphic.Create;
+  CopiedPNG.LoadFromIntfImage(DstImg);
+
+  // Clean up
+  SrcImg.Free;
+  DstImg.Free;
+
+  Result := CopiedPNG;
+
+end;
+
+function ResizePNG(Source: TPortableNetworkGraphic; aNewWidth, aNewHeight:Integer): TPortableNetworkGraphic;
+var
+  SrcImg, DstImg: TLazIntfImage;
+  SrcX, SrcY, DestX, DestY, Width, Height: integer;
+  OldWidth,OldHeight,OldX,OldY: Integer;
+  MyTFPColor: TFPColor;
+  CopiedPNG: TPortableNetworkGraphic;
+  MyColor: TFPColor;
+begin
+  // Create source interface image from original PNG
+  SrcImg := TLazIntfImage.Create(0, 0);
+  //writeln('handle allocated ',Source.HandleAllocated);
+
+  SrcImg.LoadFromBitmap(Source.Handle, Source.MaskHandle);
+
+  // Create destination interface image with same dimensions and pixel format
+
+  DstImg := TLazIntfImage.Create(0, 0, [riqfRGB, riqfAlpha]);
+  DstImg.DataDescription := SrcImg.DataDescription;
+  OldWidth := Source.Width;
+  OldHeight := Source.Height;
+  DstImg.SetSize(aNewWidth, aNewHeight);
+
+
+  // Copy each pixel's ARGB value
+  // for each pixel in the new image, look convert its coordinates to one in the old image and copy its value
+
+  for DestY := 0 to aNewHeight - 1 do
+  begin
+
+    for DestX := 0 to aNewWidth - 1 do
+    begin
+      SrcX := (DestX * OldWidth) div aNewWidth;
+      SrcY := (DestY * OldHeight) div aNewHeight;
+
       MyTFPColor := SrcImg.Colors[SrcX, SrcY];
       MyColor.red := MyTFPColor.Red;
       MyColor.green := MyTFPColor.green;
