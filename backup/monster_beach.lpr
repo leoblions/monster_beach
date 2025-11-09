@@ -9,7 +9,7 @@ program monster_beach;
 uses
   TileGrid, Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Player, LCLType, LCLIntf, Interfaces, NameOfKey, GameEnums,
-  Generics.Collections, UHeadsUp, Entity;
+  Generics.Collections, UHeadsUp, Entity, Projectile, Utils, GameEngine;
 const
      FPS = 60;
      TPS = 15;
@@ -39,17 +39,17 @@ type
 
   public
     Panel: TPanel;
-    Player: TEntity;
+    Player: TPlayer;
     HeadsUp: THeadsUp;
     TileGrid: TTileGrid;
+    GameEngine: TGameEngine;
     Frame:Integer;
     //PlayerMotion:TPlayerMotion;
     PlayerDirection: TDirection;
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
   end;
-var
-  Game: TMainForm;
+
 
 { TMainForm }
 
@@ -60,6 +60,7 @@ begin
   Player := TPlayer.Create(Self,  10, 10, 0);
   TileGrid := TTileGrid.Create(self,0,10,10,0);
   HeadsUp := THeadsUp.Create(Self);
+
   // window setup
   Caption := 'I SCREAM';
   Position := poScreenCenter;
@@ -72,6 +73,8 @@ begin
   Panel.Parent := Self;
   Panel.Align := alClient;
   Panel.OnPaint := @PanelPaint;
+  GameEngine := TGameEngine.Create(Self,Panel);
+  GameEngine.AddEntity(Player);
 
   // Load PNG image with alpha channel
   PlayerImage := TPortableNetworkGraphic.Create;
@@ -107,6 +110,7 @@ procedure TMainForm.OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
   );
 begin
   Self.Player.HandleKey(Key,True);
+  Self.GameEngine.OnKeyDown(Sender ,   Key , Shift );
   //writeln(key.tostring);
 
 end;
@@ -115,6 +119,7 @@ procedure TMainForm.OnKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState
   );
 begin
   Self.Player.HandleKey(Key,False);
+  Self.GameEngine.OnKeyUp(Sender ,   Key , Shift );
   writeln(key.tostring);
 
 end;
@@ -122,7 +127,8 @@ end;
 procedure TMainForm.PanelPaint(Sender: TObject);
 var
   R: TRect;
-  X, Y: Integer;
+  X, Y,i:  Integer;
+  Entity:TEntity;
 begin
   // Clear background
   Panel.Canvas.Brush.Color := clWhite;
@@ -138,6 +144,7 @@ begin
   R.Bottom := R.Top + 100;
   Panel.Canvas.Rectangle(R);
 
+
   // Draw the PNG image centered over the square
   X := (Panel.Width div 2) - (PlayerImage.Width div 2);
   Y := (Panel.Height div 2) - (PlayerImage.Height div 2);
@@ -147,18 +154,38 @@ begin
   Canvas.FillRect(ClientRect);
 
   TileGrid.Draw(Panel);
+  for i := 0 to High(GameEngine.Entities) do
+  begin
+    Entity := GameEngine.Entities[i];
+    if (nil<>Entity) and(Entity.IsAlive()) then
+    begin
+      Entity.Draw(Panel);
+    end;
+
+  end;
   HeadsUp.Draw();
-  Player.Draw(Panel);
+  //Player.Draw(Panel);
 end;
 
 procedure TMainForm.Tick(Sender: TObject);
 var
   Sender1: TObject;
+  i: Integer;
+  Entity: TEntity;
 begin
 
 
   TileGrid.Update;
-  Player.Update;
+  //Player.Update;
+  for i := 0 to High(GameEngine.Entities) do
+  begin
+    Entity := GameEngine.Entities[i];
+    if (nil<>Entity) and(Entity.IsAlive()) then
+    begin
+      Entity.Update;
+    end;
+
+  end;
   HeadsUp.Update();
 end;
 
@@ -175,6 +202,7 @@ var
 
 
 begin
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

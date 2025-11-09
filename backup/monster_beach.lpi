@@ -81,6 +81,21 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Entity"/>
       </Unit>
+      <Unit>
+        <Filename Value="projectile.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Projectile"/>
+      </Unit>
+      <Unit>
+        <Filename Value="utils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Utils"/>
+      </Unit>
+      <Unit>
+        <Filename Value="gameengine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="GameEngine"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

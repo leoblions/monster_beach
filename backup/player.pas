@@ -13,9 +13,13 @@ const
   PL_WIDTH = 100;
   PLAYER_WALK_SPEED = 4;
   ATTENUATE_COUNTER_RATE = 5;
+  FRAME_SEQ_MAX = 3;
+
 var
   AttenuateCounter:Integer;
+  SpriteArrRightWalk, SpriteArrRightStand, SpriteArrRightForward,SpriteArrAwayWalk,SpriteArrRightFight,SpriteArrRightWeapon:TPNGArray;
 type
+  TCutPositions = array[0..4] of integer; // startX, startY, width, height, amount
 
   TPlayer = class(TEntity)
 
@@ -41,7 +45,7 @@ type
     Up,Down,Left,Right: Bool;
     //constructor Create(aGame: TForm; aPlayer: TEntity);
     procedure Attenuate(out aSpeed : Integer);
-    procedure HandleKey(Key:Word; isDown: bool);
+
 
     procedure DoAtenuate();
 
@@ -51,19 +55,22 @@ type
   House:real;
     //procedure Paint; override;
   public
-    WorldX, WorldY, FVelX, FVelY: Integer;
-    Height, Width: Integer;
+   //FVelX, FVelY: Integer;
+    Direction:Char;
+    //Height, Width: Integer;
     Kind, TState, Frame: Integer;
     constructor  Create(aGame:TForm;  aWorldX, aWorldY, aKind : Integer); override;
     procedure Draw(Panel:TPanel); override;
     procedure Update(); override;
     procedure UpdateMoveFlags();
+    procedure HandleKey(Key:Word; isDown: bool);
 
 
 
   end;
-var
-  Amount:Integer;
+
+
+
 const
   PlayerWidth = 20;
   PlayerHeight = 20;
@@ -72,6 +79,7 @@ const
   TilesX = 25;
   TilesY = 25;
   TileSize = 100;
+
 
 implementation
 
@@ -86,8 +94,8 @@ begin
   //inherited CreateNew(AOwner, Num);  //constructor calls the base class constructor using the inherited keyword
   for i :=0 to High(MoveFlags) do MoveFlags[i] := false;
   Game := aGame;
-  WorldX := aWorldX;
-  WorldY := aWorldY;
+  X := aWorldX;
+  Y := aWorldY;
   Frame := 0;
   FrameChangeCount := 0;
   FVelX:=0;
@@ -95,7 +103,12 @@ begin
   Width := 20;
   Height := 20;
   Kind := aKind;
+  Health := 100;
+  EntityKind := 'p';
   LoadImages();
+  Direction := 'r';
+  // init image arrays
+
 
 
 end;
@@ -109,39 +122,52 @@ begin
 
   Image := TImage.Create(Game);
   Image.Parent := Game;
-  Image.SetBounds(WorldX, WorldY, 100, 100);
+  Image.SetBounds(X, Y, 100, 100);
   Image.Stretch := True;
   Image.Proportional := True;
 
   PlayerPNG := TPortableNetworkGraphic.Create;
   try
     PlayerPNG.LoadFromFile(PlayerSheetPath);
-    WriteLn('PNG height ',  PlayerPNG.height);
-    //PlayerPNG:= GetSubimagePNG2(PlayerPNG,200,300,100,100);
+
+
     PlayerPNG:= ExtractTransparentSubPNG(PlayerPNG,0,0,150,200);
-     //PlayerPNG:= ExtractTransparentSubPNG(PlayerPNG,150,200,0,0);
+
 
     Image.Picture.Assign(PlayerPNG);
 
     // spritesheet
     PNGTemp := TPortableNetworkGraphic.Create;
     PNGTemp.LoadFromFile(PlayerSheetPath);
-    PNGTemp := ResizePNG(PNGTemp,300,300);
+
     PlayerImagesLeft := cutSpritesheetPNG( PNGTemp,4,1,150,200);
     PNGTemp :=  FlipXPNG(PNGTemp);
     PlayerImagesRight := cutSpritesheetPNG( PNGTemp,4,1,150,200);
     PlayerImages := PlayerImagesRight;
-    //for i := 0 to High(PlayerImages) do
-    //begin
-    //  PlayerImages[i] :=  FlipXPNG(PlayerImages[i]);
-    //end;
-    //PlayerPNG :=   PlayerImages[0];
+
 
   except
     on E: Exception do
+    begin
       ShowMessage('Failed to load PNG: ' + E.Message);
-
+    end;
   end;
+
+  //PNGTemp :=  TPortableNetworkGraphic.Create;
+  PNGTemp.LoadFromFile('images/hero2cut.png');
+
+  SpriteArrRightWalk := GetRowPNG(PNGTemp,0,100,50,100,4);
+  SpriteArrRightStand := GetRowPNG(PNGTemp,0,200,50,100,4);
+  SpriteArrRightForward := GetRowPNG(PNGTemp,0,0,50,100,4);
+  SpriteArrAwayWalk := GetRowPNG(PNGTemp,200,200,50,100,4);
+  SpriteArrRightFight := GetRowPNG(PNGTemp,0,400,100,100,4);
+  SpriteArrRightWeapon := GetRowPNG(PNGTemp,0,300,100,100,4);
+
+  PlayerImagesLeft:=  FlipXRowPNG(SpriteArrRightForward);
+  PlayerImagesRight:=  SpriteArrRightForward;
+  PlayerImages := PlayerImagesRight;
+
+
 
 
 end;
@@ -157,10 +183,11 @@ begin
 
       FrameChangeCount :=0;
 
-      if(Frame >  3) then
+      if(Frame >=  FRAME_SEQ_MAX) then
           Frame := 0
       else
           Frame += 1 ;
+
       end
     else
         begin
@@ -168,13 +195,30 @@ begin
         end;
 
 
-  WorldX += FVelX;
-  WorldY += FVelY;
+  Self.FX += FVelX;
+  Self.FY += FVelY;
 
   if FVelX > 0 then
-   PlayerImages := PlayerImagesRight
+   begin
+   PlayerImages := SpriteArrRightWalk;
+   Self.Direction := 'r';
+   end
    else if FVelX < 0 then
-    PlayerImages := PlayerImagesLeft;
+    begin
+      PlayerImages := PlayerImagesLeft;
+      Direction := 'l';
+    end;
+
+  if FVelY < 0 then
+   begin
+       PlayerImages := SpriteArrAwayWalk ;
+       Direction := 'u';
+   end
+   else if  FVelY > 0 then
+    begin
+         PlayerImages :=  PlayerImagesRight ;
+          Direction := 'd';
+    end;
 
 end;
 
@@ -190,10 +234,10 @@ begin
   SquareSize := 20;
   Canvas := Panel.Canvas;
   Canvas.Brush.Color := clRed;
-  Canvas.FillRect(Rect(WorldX, WorldY, WorldX + SquareSize, WorldY + SquareSize));
+  Canvas.FillRect(Rect(FX, FY, FX + SquareSize, FY + SquareSize));
   PlayerImage :=  PlayerImages[Frame];
 
-  Canvas.Draw(WorldX, WorldY, PlayerImage);
+  Canvas.Draw(FX, FY, PlayerImage);
 
   //update TImage control properties
   TempPNG := PlayerImages[Frame];
@@ -238,6 +282,8 @@ begin
     begin
     DirectionIndexPart:=3;
     end;
+  otherwise
+    Exit;
   end;
 
   if isDown then
@@ -247,7 +293,7 @@ begin
     end
   else
       begin
-      writeln('stop ', DirectionIndexPart + 0);
+
          MoveFlags[DirectionIndexPart + 4] := True;
          MoveFlags[DirectionIndexPart + 0] := False
       end

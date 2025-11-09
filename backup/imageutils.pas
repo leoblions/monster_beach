@@ -9,7 +9,8 @@ uses
   SysUtils, Dialogs, FPReadPNG, FPImage, intfgraphics;
 
 type
-  TPNGArray = array [0..30] of TPortableNetworkGraphic;
+  TPNGArray = array [0..30]  of TPortableNetworkGraphic;
+  EMyCustomException = class(Exception); // Define a custom exception class
 
 function GetSubImage(SourceBitmap: TBitmap; const SubRect: TRect): TBitmap;
 function GetScaledImageFromFile(URL: string; aNewWidth, aNewHeight: integer): TBitmap;
@@ -25,6 +26,9 @@ function cutSpritesheetPNG(inputPNG: TPortableNetworkGraphic;
 function ExtractTransparentSubPNG(Source: TPortableNetworkGraphic;
   startX, startY, Width, Height: integer): TPortableNetworkGraphic;
 function FlipXPNG(Source: TPortableNetworkGraphic): TPortableNetworkGraphic;
+function ResizePNG(Source: TPortableNetworkGraphic; aNewWidth, aNewHeight:Integer): TPortableNetworkGraphic;
+function GetRowPNG(Source: TPortableNetworkGraphic; aStartX,aStartY,aWidth, aHeight,aAmount:Integer): TPNGArray;
+function FlipXRowPNG(Source: TPNGArray ): TPNGArray;
 
 implementation
 
@@ -91,6 +95,11 @@ begin
 end;
 
 
+
+
+
+
+
 function GetScaledImageFromFileBMP(URL: string; aNewWidth, aNewHeight: integer): TBitmap;
 var
   Original: TBitmap;
@@ -123,6 +132,11 @@ begin
   end;
   //Result := Scaled;
 end;
+
+
+
+
+
 
 (*
 
@@ -183,6 +197,12 @@ begin
 
 end;
 
+
+
+
+
+
+
 function GetSubimagePNG2(InputPNG: TPortableNetworkGraphic;
   aStartX, aStartY, aNewWidth, aNewHeight: integer): TPortableNetworkGraphic;
 var
@@ -208,15 +228,20 @@ end;
 
 
 
+
+
+
 function cutSpritesheetPNG(inputPNG: TPortableNetworkGraphic;
   aCols, aRows, aWidth, aHeight: integer): TPNGArray;
 var
-  x, y, CounterOP: integer;
+  amount, x, y, CounterOP: integer;
   StartX, StartY: integer;
   OutputArray: TPNGArray;
   CutPNG: TPortableNetworkGraphic;
   SubRect: TRect;
 begin
+  amount := aCols * aRows;
+  //SetLength(OutputArray, amount);
   //Result := OutputArray;
   CounterOP := 0;
   //OutputArray = array[0..(aRows*aCols)] of  TPortableNetworkGraphic ;
@@ -281,6 +306,11 @@ begin
   Result := PNG;
 
 end;
+
+
+
+
+
 
 {
   Returns a subimage from a TPortableNetworkGraphic object.
@@ -350,6 +380,10 @@ begin
 end;
 
 
+
+
+
+
 function FlipXPNG(Source: TPortableNetworkGraphic): TPortableNetworkGraphic;
 var
   SrcImg, DstImg: TLazIntfImage;
@@ -361,8 +395,15 @@ begin
   // Create source interface image from original PNG
   SrcImg := TLazIntfImage.Create(0, 0);
   //writeln('handle allocated ',Source.HandleAllocated);
+  if not Assigned(Source) then
+    begin
+       Result := nil;
+       Exit;
+    end
 
-  SrcImg.LoadFromBitmap(Source.Handle, Source.MaskHandle);
+  else
+      SrcImg.LoadFromBitmap(Source.Handle, Source.MaskHandle);
+
 
   // Create destination interface image with same dimensions and pixel format
 
@@ -406,5 +447,169 @@ begin
   Result := CopiedPNG;
 
 end;
+
+
+
+
+
+
+
+
+function ResizePNG(Source: TPortableNetworkGraphic; aNewWidth, aNewHeight:Integer): TPortableNetworkGraphic;
+var
+  SrcImg, DstImg: TLazIntfImage;
+  SrcX, SrcY, DestX, DestY, Width, Height: integer;
+  OldWidth,OldHeight,OldX,OldY: Integer;
+  MyTFPColor: TFPColor;
+  CopiedPNG: TPortableNetworkGraphic;
+  MyColor: TFPColor;
+begin
+  // Create source interface image from original PNG
+  SrcImg := TLazIntfImage.Create(0, 0);
+  //writeln('handle allocated ',Source.HandleAllocated);
+
+  SrcImg.LoadFromBitmap(Source.Handle, Source.MaskHandle);
+
+  // Create destination interface image with same dimensions and pixel format
+
+  DstImg := TLazIntfImage.Create(0, 0, [riqfRGB, riqfAlpha]);
+  DstImg.DataDescription := SrcImg.DataDescription;
+  OldWidth := Source.Width;
+  OldHeight := Source.Height;
+  DstImg.SetSize(aNewWidth, aNewHeight);
+
+
+  // Copy each pixel's ARGB value
+  // for each pixel in the new image, look convert its coordinates to one in the old image and copy its value
+
+  for DestY := 0 to aNewHeight - 1 do
+  begin
+
+    for DestX := 0 to aNewWidth - 1 do
+    begin
+      SrcX := (DestX * OldWidth) div aNewWidth;
+      SrcY := (DestY * OldHeight) div aNewHeight;
+
+      MyTFPColor := SrcImg.Colors[SrcX, SrcY];
+      MyColor.red := MyTFPColor.Red;
+      MyColor.green := MyTFPColor.green;
+      MyColor.blue := MyTFPColor.blue;
+      MyColor.alpha := MyTFPColor.alpha;
+      DstImg.Colors[DestX, DestY] := MyColor;
+    end;
+  end;
+
+
+  // Create the output PNG and assign the copied bitmap
+
+  CopiedPNG := TPortableNetworkGraphic.Create;
+  CopiedPNG.LoadFromIntfImage(DstImg);
+
+  // Clean up
+  SrcImg.Free;
+  DstImg.Free;
+
+  Result := CopiedPNG;
+
+end;
+
+
+
+
+
+function GetRowPNG(Source: TPortableNetworkGraphic; aStartX,aStartY,aWidth, aHeight,aAmount:Integer): TPNGArray;
+ var
+  CurrentXPosition, XIter : integer;
+   i, StartX, StartY,value : integer;
+  OutputArray: TPNGArray;
+  CutPNG: TPortableNetworkGraphic;
+  SubRect: TRect;
+begin
+  for i:= 0 to High(OutputArray) do
+      OutputArray[i]:=nil;
+
+  value := (aWidth*aAmount)+aStartX;
+  if   (value  > Source.Width) then
+    begin
+      writeln('given value ' , value, '  width is ',Source.Width);
+      raise EMyCustomException.Create('Width paramaters too large for image size ');
+
+    end;
+
+  value := aStartY + aHeight;
+  if (value > Source.Height)  then
+    begin
+      writeln('given value ' ,value, 'height is ',Source.Height);
+      raise EMyCustomException.Create('Height paramaters too large for image size ');
+
+    end;
+
+
+  //SetLength(OutputArray, aAmount);
+
+  for XIter := 0 to aAmount do
+
+    begin
+      CurrentXPosition := aStartX + (XIter * aWidth);
+      CutPNG := ExtractTransparentSubPNG(Source, CurrentXPosition, aStartY, aWidth, aHeight);
+
+
+      OutputArray[XIter] := CutPNG;
+      //CounterOP += 1;
+    end;
+  Result := OutputArray;
+  end;
+
+
+
+function FlipXRowPNG(Source: TPNGArray ): TPNGArray;
+ var
+  i : integer;
+
+  OutputArray: TPNGArray;
+  SrcPNG, CutPNG, TempPNG: TPortableNetworkGraphic;
+  QuitNow :boolean;
+
+
+begin
+  for i := 0 to High(Source) do
+    OutputArray[i]:=nil;
+
+  for i := 0 to High(Source) do
+    begin
+
+      //if (SrcPNG is TRasterImage) and (SrcPNG <> nil) and Assigned(SrcPNG) then
+      try
+        begin
+        SrcPNG := Source[i];
+        TempPNG := TPortableNetworkGraphic.Create;
+        TempPNG.Assign(Source[i]);
+        CutPNG := FlipXPNG(TempPNG);
+      OutputArray[i] := CutPNG;
+        end;
+
+      except
+        on E: Exception do
+        begin
+        OutputArray[i] := nil;
+        Break;
+        end;
+
+        //goto Cleanup;
+
+      end;
+
+
+  end;
+  //Cleanup:
+    TempPNG.Free;
+    SrcPNG.Free;
+    CutPNG.Free;
+    Result := OutputArray;
+
+
+
+end;
+
 
 end.
