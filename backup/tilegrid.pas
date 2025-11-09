@@ -20,7 +20,7 @@ type
     //Image : TImage;
     TileBitmap: TBitmap;
     Images: array[0..15] of TImage;     // stores background images
-    Grid: array[0..24, 1..24] of integer; // stores data for tile map
+    Grid: array[0..100, 1..24] of integer; // stores data for tile map
 
 
     procedure LoadImages();
@@ -38,7 +38,7 @@ type
 const
   TilesX = 25;
   TilesY = 25;
-  TileSize = 100;
+  TileSize = 50;
 
 
 
@@ -79,15 +79,15 @@ begin
   //WorldX +=1;
 end;
 
-procedure TTileGrid.Draw(Panel:TPanel);
+procedure TTileGrid.Draw(aCanvas:TCanvas);
 var
   SquareSize: integer;
-  Canvas: TCanvas;
+  //Canvas: TCanvas;
   x, y, Value, ScreenX,ScreenY: integer;
 begin
 
   //SquareSize := 20;
-  Canvas := Panel.Canvas;
+  //Canvas := Panel.Canvas;
   for y := 0 to 24 do
     for x := 0 to 24 do
     begin
@@ -96,7 +96,7 @@ begin
       begin
         ScreenX := x * TileSize;
         ScreenY := y * TileSize;
-        Canvas.Draw(ScreenX, ScreenY, TileBitmap);
+        aCanvas.Draw(ScreenX, ScreenY, TileBitmap);
       end
       else
       begin

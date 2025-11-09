@@ -60,7 +60,7 @@ type
     //Height, Width: Integer;
     Kind, TState, Frame: Integer;
     constructor  Create(aGame:TForm;  aWorldX, aWorldY, aKind : Integer); override;
-    procedure Draw(Panel:TPanel); override;
+    procedure Draw(aCanvas:TCanvas); override;
     procedure Update(); override;
     procedure UpdateMoveFlags();
     procedure HandleKey(Key:Word; isDown: bool);
@@ -222,7 +222,7 @@ begin
 
 end;
 
-procedure TPlayer.Draw(Panel:TPanel);
+procedure TPlayer.Draw(aCanvas:TCanvas);
 var
   SquareSize: integer;
   Canvas: TCanvas;
@@ -232,12 +232,12 @@ var
 begin
 
   SquareSize := 20;
-  Canvas := Panel.Canvas;
-  Canvas.Brush.Color := clRed;
+  //Canvas := Panel.Canvas;
+  aCanvas.Brush.Color := clRed;
   //Canvas.FillRect(Rect(FX, FY, FX + SquareSize, FY + SquareSize));
   PlayerImage :=  PlayerImages[Frame];
 
-  Canvas.Draw(FX, FY, PlayerImage);
+  aCanvas.Draw(FX, FY, PlayerImage);
 
   //update TImage control properties
   TempPNG := PlayerImages[Frame];

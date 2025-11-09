@@ -153,7 +153,7 @@ begin
   //  end;
   //end;
 
-  //PNGTemp :=  TPortableNetworkGraphic.Create;
+  PNGTemp :=  TPortableNetworkGraphic.Create;
   PNGTemp.LoadFromFile('images/hero2cut.png');
 
   SpriteArrRightWalk := GetRowPNG(PNGTemp,0,100,50,100,4);
@@ -222,7 +222,7 @@ begin
 
 end;
 
-procedure TPlayer.Draw(Panel:TPanel);
+procedure TPlayer.Draw(aCanvas:TCanvas);
 var
   SquareSize: integer;
   Canvas: TCanvas;
@@ -232,12 +232,12 @@ var
 begin
 
   SquareSize := 20;
-  Canvas := Panel.Canvas;
-  Canvas.Brush.Color := clRed;
+  //Canvas := Panel.Canvas;
+  aCanvas.Brush.Color := clRed;
   //Canvas.FillRect(Rect(FX, FY, FX + SquareSize, FY + SquareSize));
   PlayerImage :=  PlayerImages[Frame];
 
-  Canvas.Draw(FX, FY, PlayerImage);
+  aCanvas.Draw(FX, FY, PlayerImage);
 
   //update TImage control properties
   TempPNG := PlayerImages[Frame];

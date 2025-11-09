@@ -15,7 +15,6 @@ type
 
   public
     EntityKind: char;
-    GameEngine:TGameEngine;
     constructor Create(aGame:TForm;  aWorldX, aWorldY, aKind : Integer);  virtual;
     destructor Destroy; override;
     procedure Update(DeltaTime: Single); virtual; abstract;

@@ -28,7 +28,7 @@ type
   public
 
     constructor Create(aGame: TForm; aNum, aWorldX, aWorldY, aKind: integer);
-    procedure Draw(Panel:TPanel);
+    procedure Draw(aCanvas:TCanvas);
     procedure Update();
 
 
@@ -79,15 +79,15 @@ begin
   //WorldX +=1;
 end;
 
-procedure TTileGrid.Draw(Panel:TPanel);
+procedure TTileGrid.Draw(aCanvas:TCanvas);
 var
   SquareSize: integer;
-  Canvas: TCanvas;
+  //Canvas: TCanvas;
   x, y, Value, ScreenX,ScreenY: integer;
 begin
 
   //SquareSize := 20;
-  Canvas := Panel.Canvas;
+  //Canvas := Panel.Canvas;
   for y := 0 to 24 do
     for x := 0 to 24 do
     begin
@@ -96,7 +96,7 @@ begin
       begin
         ScreenX := x * TileSize;
         ScreenY := y * TileSize;
-        Canvas.Draw(ScreenX, ScreenY, TileBitmap);
+        aCanvas.Draw(ScreenX, ScreenY, TileBitmap);
       end
       else
       begin

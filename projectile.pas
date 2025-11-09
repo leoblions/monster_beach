@@ -54,7 +54,7 @@ type
     //Height, Width: Integer;
     Kind, TState, Frame: integer;
     constructor Create(aGame: TForm; aWorldX, aWorldY, aKind: integer); override;
-    procedure Draw(Panel: TPanel); override;
+    procedure Draw(aCanvas:TCanvas); override;
     procedure Update(); override;
     procedure SetVelocity(aVelX, aVelY: integer);
 
@@ -123,17 +123,17 @@ begin
 
 end;
 
-procedure TProjectile.Draw(Panel: TPanel);
+procedure TProjectile.Draw(aCanvas:TCanvas);
 var
   SquareSize: integer;
-  Canvas: TCanvas;
+  //Canvas: TCanvas;
   TempPNG: TPortableNetworkGraphic;
 begin
 
   SquareSize := 20;
-  Canvas := Panel.Canvas;
-  Canvas.Brush.Color := clRed;
-  Canvas.FillRect(Rect(FX, FY, FX + Width, FY + Height));
+  //aCanvas := Panel.Canvas;
+  aCanvas.Brush.Color := clRed;
+  aCanvas.FillRect(Rect(FX, FY, FX + Width, FY + Height));
 
 end;
 

@@ -63,7 +63,7 @@ type
     Kind, TState, Frame: Integer;
 
     constructor  Create(aGame:TForm;  aWorldX, aWorldY, aKind : Integer); override;
-    procedure Draw(Panel:TPanel); override;
+    procedure Draw(aCanvas:TCanvas); override;
     procedure Update(); override;
     procedure UpdateMoveFlags();
     procedure ChooseDirection();
@@ -238,22 +238,22 @@ begin
 
 end;
 
-procedure TEnemy.Draw(Panel:TPanel);
+procedure TEnemy.Draw(aCanvas:TCanvas);
 var
   SquareSize: integer;
-  Canvas: TCanvas;
+  //Canvas: TCanvas;
   TempPNG : TPortableNetworkGraphic;
 
 
 
 begin
   SquareSize := 20;
-  Canvas := Panel.Canvas;
+  //Canvas := Panel.Canvas;
   ////Canvas.Brush.Color := clBlue;
   //Canvas.FillRect(Rect(FX, FY, FX + SquareSize, FY + SquareSize));
   CurrentImage :=  CurrentImages[Frame];
 
-  Canvas.Draw(FX, FY, CurrentImage);
+  aCanvas.Draw(FX, FY, CurrentImage);
 
   //update TImage control properties
   TempPNG := PlayerImages[Frame];
