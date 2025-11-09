@@ -96,6 +96,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameEngine"/>
       </Unit>
+      <Unit>
+        <Filename Value="resourcemanager.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResourceManager"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enemy.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Enemy"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

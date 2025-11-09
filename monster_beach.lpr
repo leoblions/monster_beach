@@ -9,7 +9,8 @@ program monster_beach;
 uses
   TileGrid, Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Player, LCLType, LCLIntf, Interfaces, NameOfKey, GameEnums,
-  Generics.Collections, UHeadsUp, Entity, Projectile, Utils, GameEngine;
+  Generics.Collections, UHeadsUp, Entity, Projectile, Utils, GameEngine,
+  ResourceManager, Enemy;
 const
      FPS = 60;
      TPS = 15;
@@ -73,8 +74,11 @@ begin
   Panel.Parent := Self;
   Panel.Align := alClient;
   Panel.OnPaint := @PanelPaint;
+
+  // game engine setup
   GameEngine := TGameEngine.Create(Self,Panel);
   GameEngine.AddEntity(Player);
+  GameEngine.AddEnemy(300,300,0);
 
   // Load PNG image with alpha channel
   PlayerImage := TPortableNetworkGraphic.Create;
@@ -173,6 +177,7 @@ begin
 
   TileGrid.Update;
   //Player.Update;
+  GameEngine.Update;
   for i := 0 to High(GameEngine.Entities) do
   begin
     Entity := GameEngine.Entities[i];
@@ -183,6 +188,7 @@ begin
 
   end;
   HeadsUp.Update();
+
 end;
 
 

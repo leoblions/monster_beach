@@ -9,7 +9,8 @@ program monster_beach;
 uses
   TileGrid, Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Player, LCLType, LCLIntf, Interfaces, NameOfKey, GameEnums,
-  Generics.Collections, UHeadsUp, Entity, Projectile, Utils, GameEngine;
+  Generics.Collections, UHeadsUp, Entity, Projectile, Utils, GameEngine,
+  ResourceManager, Enemy;
 const
      FPS = 60;
      TPS = 15;
@@ -57,7 +58,7 @@ constructor TMainForm.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
   // components
-  Player := TPlayer.Create(Self,  10, 10, 0);
+  Player := TPlayer.Create(Self,  200, 200, 0);
   TileGrid := TTileGrid.Create(self,0,10,10,0);
   HeadsUp := THeadsUp.Create(Self);
 
@@ -73,19 +74,18 @@ begin
   Panel.Parent := Self;
   Panel.Align := alClient;
   Panel.OnPaint := @PanelPaint;
+
+  // game engine setup
   GameEngine := TGameEngine.Create(Self,Panel);
   GameEngine.AddEntity(Player);
+  GameEngine.AddEnemy(500,500,0);
 
   // Load PNG image with alpha channel
   PlayerImage := TPortableNetworkGraphic.Create;
   PlayerImage.LoadFromFile(ExtractFilePath(ParamStr(0)) +
                            'images' + DirectorySeparator + 'player.png');
 
-  // Create timer (about 60 FPS)
-  //Timer := TTimer.Create(Self);
-  //Timer.Interval := 1000 div FPS;
-  //Timer.OnTimer := @TimerTick;
-  //Timer.Enabled := True;
+
 
   // frame loop
   FrameTimer := TTimer.Create(Self);
@@ -177,6 +177,7 @@ begin
 
   TileGrid.Update;
   //Player.Update;
+  GameEngine.Update;
   for i := 0 to High(GameEngine.Entities) do
   begin
     Entity := GameEngine.Entities[i];
@@ -187,6 +188,7 @@ begin
 
   end;
   HeadsUp.Update();
+
 end;
 
 

@@ -15,6 +15,7 @@ type
 
   public
     EntityKind: char;
+    GameEngine:TGameEngine;
     constructor Create(aGame:TForm;  aWorldX, aWorldY, aKind : Integer);  virtual;
     destructor Destroy; override;
     procedure Update(DeltaTime: Single); virtual; abstract;
@@ -24,8 +25,8 @@ type
     function IsAlive(): boolean;
     property X: Integer read FX write FX;
     property Y: Integer read FY write FY;
-    property VelX: Single read FVelX write FVelX;
-    property VelY: Single read FVelY write FVelY;
+    property VelX: Integer read FVelX write FVelX;
+    property VelY: Integer read FVelY write FVelY;
     property Width: Integer read FWidth write FWidth;
     property Height: Integer read FHeight write FHeight;
     property Active: Boolean read FActive write FActive;

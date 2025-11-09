@@ -7,9 +7,9 @@
       <Unit>
         <Filename Value="monster_beach.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="54"/>
-        <CursorPos X="43" Y="60"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="186"/>
+        <CursorPos X="18" Y="190"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -17,8 +17,8 @@
         <Filename Value="player.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Player"/>
-        <TopLine Value="221"/>
-        <CursorPos X="5" Y="237"/>
+        <TopLine Value="136"/>
+        <CursorPos X="3" Y="156"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -28,23 +28,24 @@
         <UnitName Value="NameOfKey"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="29" Y="6"/>
-        <UsageCount Value="193"/>
+        <UsageCount Value="214"/>
       </Unit>
       <Unit>
         <Filename Value="gameenums.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameEnums"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="6" Y="15"/>
-        <UsageCount Value="192"/>
+        <CursorPos X="7" Y="14"/>
+        <UsageCount Value="213"/>
       </Unit>
       <Unit>
         <Filename Value="imageutils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ImageUtils"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="66" Y="13"/>
-        <UsageCount Value="190"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="514"/>
+        <CursorPos Y="535"/>
+        <UsageCount Value="211"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -53,7 +54,7 @@
         <UnitName Value="TileGrid"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="41"/>
-        <UsageCount Value="164"/>
+        <UsageCount Value="191"/>
       </Unit>
       <Unit>
         <Filename Value="ugame.pas"/>
@@ -64,7 +65,7 @@
         <UnitName Value="UGame"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="39" Y="41"/>
-        <UsageCount Value="84"/>
+        <UsageCount Value="111"/>
       </Unit>
       <Unit>
         <Filename Value="uplayermotion.pas"/>
@@ -72,7 +73,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="187"/>
         <CursorPos X="5" Y="219"/>
-        <UsageCount Value="116"/>
+        <UsageCount Value="114"/>
       </Unit>
       <Unit>
         <Filename Value="filestringutils.pas"/>
@@ -80,7 +81,7 @@
         <UnitName Value="FileStringUtils"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="98"/>
       </Unit>
       <Unit>
         <Filename Value="uheadsup.pas"/>
@@ -89,14 +90,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="42"/>
         <CursorPos X="41" Y="56"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="95"/>
       </Unit>
       <Unit>
         <Filename Value="/opt/lazarus/lcl/include/fpimagebitmap.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="127"/>
         <CursorPos Y="141"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="3"/>
       </Unit>
       <Unit>
         <Filename Value="/opt/lazarus/lcl/intfgraphics.pas"/>
@@ -104,30 +105,22 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="6668"/>
         <CursorPos Y="3388"/>
-        <UsageCount Value="9"/>
-      </Unit>
-      <Unit>
-        <Filename Value="/usr/share/lazarus/4.2.0/lcl/include/rasterimage.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="511"/>
-        <CursorPos Y="526"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="6"/>
       </Unit>
       <Unit>
         <Filename Value="ugame.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="6"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="entity.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Entity"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="6"/>
-        <CursorPos X="27" Y="28"/>
-        <UsageCount Value="48"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="28" Y="17"/>
+        <UsageCount Value="75"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/3.2.2/packages/rtl-generics/src/generics.collections.pas"/>
@@ -135,173 +128,191 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="129"/>
         <CursorPos X="52" Y="144"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="/opt/lazarus/lcl/include/rasterimage.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="40"/>
         <CursorPos Y="49"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="/opt/lazarus/lcl/include/custombitmap.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="46"/>
         <CursorPos Y="62"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="projectile.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Projectile"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="84"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="81"/>
         <CursorPos X="14" Y="95"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="utils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Utils"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <CursorPos X="28" Y="22"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="gameengine.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameEngine"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="214"/>
+        <CursorPos X="10" Y="225"/>
+        <UsageCount Value="56"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="resourcemanager.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResourceManager"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="84"/>
-        <CursorPos X="14" Y="90"/>
-        <UsageCount Value="29"/>
+        <CursorPos X="31" Y="13"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enemy.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Enemy"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="27" Y="15"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="monster_beach.lpr"/>
-        <Caret Line="112" Column="28" TopLine="97"/>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="10" Column="28"/>
       </Position>
       <Position>
         <Filename Value="gameengine.pas"/>
-        <Caret Line="111" Column="21" TopLine="93"/>
+        <Caret Line="73" Column="7" TopLine="52"/>
       </Position>
       <Position>
-        <Filename Value="monster_beach.lpr"/>
-        <Caret Line="160" Column="26" TopLine="138"/>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="62" Column="5" TopLine="48"/>
       </Position>
       <Position>
-        <Filename Value="monster_beach.lpr"/>
-        <Caret Line="144" Column="9" TopLine="129"/>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="172" Column="3" TopLine="157"/>
       </Position>
       <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="77" Column="61" TopLine="57"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="32" Column="13" TopLine="17"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="77" Column="70" TopLine="54"/>
-      </Position>
-      <Position>
-        <Filename Value="player.pas"/>
-        <Caret Line="240" Column="21" TopLine="368"/>
-      </Position>
-      <Position>
-        <Filename Value="player.pas"/>
-        <Caret Line="199" Column="3" TopLine="183"/>
-      </Position>
-      <Position>
-        <Filename Value="entity.pas"/>
-        <Caret Line="15" Column="3" TopLine="4"/>
-      </Position>
-      <Position>
-        <Filename Value="player.pas"/>
-        <Caret Line="58" Column="6" TopLine="43"/>
-      </Position>
-      <Position>
-        <Filename Value="player.pas"/>
-        <Caret Line="198" Column="19" TopLine="183"/>
-      </Position>
-      <Position>
-        <Filename Value="entity.pas"/>
-        <Caret Line="9" Column="26" TopLine="4"/>
-      </Position>
-      <Position>
-        <Filename Value="entity.pas"/>
-        <Caret Line="28" Column="27" TopLine="13"/>
-      </Position>
-      <Position>
-        <Filename Value="player.pas"/>
-        <Caret Line="237" Column="51" TopLine="222"/>
-      </Position>
-      <Position>
-        <Filename Value="projectile.pas"/>
-        <Caret Line="52" Column="20" TopLine="37"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="77" Column="50" TopLine="62"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="83" Column="3" TopLine="65"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="78" Column="24" TopLine="63"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="32" Column="13" TopLine="17"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="10" Column="83" TopLine="2"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="63" Column="20" TopLine="48"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="79" Column="55" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="gameengine.pas"/>
-        <Caret Line="87" Column="26" TopLine="73"/>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="21" Column="17"/>
       </Position>
       <Position>
         <Filename Value="monster_beach.lpr"/>
-        <Caret Line="183" Column="20" TopLine="157"/>
+        <Caret Line="177" Column="20" TopLine="162"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="177" Column="12" TopLine="162"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="181" Column="8" TopLine="162"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="268" Column="2" TopLine="257"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="308" Column="17" TopLine="293"/>
       </Position>
       <Position>
         <Filename Value="monster_beach.lpr"/>
-        <Caret Line="173" Column="14" TopLine="163"/>
+        <Caret Line="76" Column="51" TopLine="61"/>
       </Position>
       <Position>
         <Filename Value="gameengine.pas"/>
-        <Caret Line="84" Column="17" TopLine="71"/>
+        <Caret Line="11" Column="49"/>
       </Position>
       <Position>
         <Filename Value="gameengine.pas"/>
-        <Caret Line="104" Column="15" TopLine="81"/>
+        <Caret Line="109" Column="13" TopLine="91"/>
+      </Position>
+      <Position>
+        <Filename Value="monster_beach.lpr"/>
+        <Caret Line="81" Column="34" TopLine="66"/>
       </Position>
       <Position>
         <Filename Value="gameengine.pas"/>
-        <Caret Line="90" Column="5" TopLine="75"/>
+        <Caret Line="102" Column="13" TopLine="84"/>
       </Position>
       <Position>
-        <Filename Value="projectile.pas"/>
-        <Caret Line="131" Column="22" TopLine="116"/>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="2" Column="31"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="545" Column="38" TopLine="520"/>
+      </Position>
+      <Position>
+        <Filename Value="imageutils.pas"/>
+        <Caret Line="2"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="159" Column="42" TopLine="149"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="178" TopLine="154"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="159" Column="42" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="231" Column="21" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="11" Column="61"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="229" Column="35" TopLine="215"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="222" Column="60" TopLine="214"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="271" Column="5" TopLine="256"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="63" Column="5" TopLine="82"/>
+      </Position>
+      <Position>
+        <Filename Value="gameengine.pas"/>
+        <Caret Line="221" Column="9" TopLine="214"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="194" Column="18" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="enemy.pas"/>
+        <Caret Line="344" Column="40" TopLine="319"/>
       </Position>
     </JumpHistory>
     <RunParams>

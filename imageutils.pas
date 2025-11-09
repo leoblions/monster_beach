@@ -533,6 +533,7 @@ begin
     begin
       writeln('given value ' , value, '  width is ',Source.Width);
       raise EMyCustomException.Create('Width paramaters too large for image size ');
+      DumpExceptionBacktrace(Output);
 
     end;
 
@@ -541,6 +542,7 @@ begin
     begin
       writeln('given value ' ,value, 'height is ',Source.Height);
       raise EMyCustomException.Create('Height paramaters too large for image size ');
+      DumpExceptionBacktrace(Output);
 
     end;
 

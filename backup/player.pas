@@ -120,38 +120,38 @@ var
   i: Integer;
 begin
 
-  Image := TImage.Create(Game);
-  Image.Parent := Game;
-  Image.SetBounds(X, Y, 100, 100);
-  Image.Stretch := True;
-  Image.Proportional := True;
-
-  PlayerPNG := TPortableNetworkGraphic.Create;
-  try
-    PlayerPNG.LoadFromFile(PlayerSheetPath);
-
-
-    PlayerPNG:= ExtractTransparentSubPNG(PlayerPNG,0,0,150,200);
-
-
-    Image.Picture.Assign(PlayerPNG);
-
-    // spritesheet
-    PNGTemp := TPortableNetworkGraphic.Create;
-    PNGTemp.LoadFromFile(PlayerSheetPath);
-
-    PlayerImagesLeft := cutSpritesheetPNG( PNGTemp,4,1,150,200);
-    PNGTemp :=  FlipXPNG(PNGTemp);
-    PlayerImagesRight := cutSpritesheetPNG( PNGTemp,4,1,150,200);
-    PlayerImages := PlayerImagesRight;
-
-
-  except
-    on E: Exception do
-    begin
-      ShowMessage('Failed to load PNG: ' + E.Message);
-    end;
-  end;
+  //Image := TImage.Create(Game);
+  //Image.Parent := Game;
+  //Image.SetBounds(X, Y, 100, 100);
+  //Image.Stretch := True;
+  //Image.Proportional := True;
+  //
+  //PlayerPNG := TPortableNetworkGraphic.Create;
+  //try
+  //  PlayerPNG.LoadFromFile(PlayerSheetPath);
+  //
+  //
+  //  PlayerPNG:= ExtractTransparentSubPNG(PlayerPNG,0,0,150,200);
+  //
+  //
+  //  Image.Picture.Assign(PlayerPNG);
+  //
+  //  // spritesheet
+  //  PNGTemp := TPortableNetworkGraphic.Create;
+  //  PNGTemp.LoadFromFile(PlayerSheetPath);
+  //
+  //  PlayerImagesLeft := cutSpritesheetPNG( PNGTemp,4,1,150,200);
+  //  PNGTemp :=  FlipXPNG(PNGTemp);
+  //  PlayerImagesRight := cutSpritesheetPNG( PNGTemp,4,1,150,200);
+  //  PlayerImages := PlayerImagesRight;
+  //
+  //
+  //except
+  //  on E: Exception do
+  //  begin
+  //    ShowMessage('Failed to load PNG: ' + E.Message);
+  //  end;
+  //end;
 
   //PNGTemp :=  TPortableNetworkGraphic.Create;
   PNGTemp.LoadFromFile('images/hero2cut.png');
@@ -234,7 +234,7 @@ begin
   SquareSize := 20;
   Canvas := Panel.Canvas;
   Canvas.Brush.Color := clRed;
-  Canvas.FillRect(Rect(FX, FY, FX + SquareSize, FY + SquareSize));
+  //Canvas.FillRect(Rect(FX, FY, FX + SquareSize, FY + SquareSize));
   PlayerImage :=  PlayerImages[Frame];
 
   Canvas.Draw(FX, FY, PlayerImage);

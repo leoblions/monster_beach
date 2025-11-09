@@ -8,12 +8,13 @@ interface
 
 uses
   Classes, SysUtils, Entity, TileGrid, Forms, Controls, Graphics, Projectile, Player,
-  Dialogs, StdCtrls, LCLType, LCLIntf, ExtCtrls;
+  Dialogs, StdCtrls, LCLType, LCLIntf, ExtCtrls, Enemy,Utils;
 
 const
   MAX_ENTITIES = 10;
   INVALID_SLOT = -1;
   PLAYER_KIND = 'p';
+  ENEMY_KIND = 'e';
   PROJECTILE_SPEED_1 = 10;
   PROJECTILE_SPEED_2 = 13;
 
@@ -32,6 +33,7 @@ type
     Player: TPlayer;
     constructor Create(aForm: TForm; aPanel: TPanel);
     procedure AddEntity(aEntity: TEntity);
+    procedure AddEnemy(aWorldX, aWorldY, aEnemyKind: integer);
     procedure Update();
     procedure OnKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure OnKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
@@ -52,6 +54,12 @@ begin
   Self.Panel := aPanel;
 end;
 
+
+
+
+{
+ add an entity to the array, created somewhere else
+}
 procedure TGameEngine.AddEntity(aEntity: TEntity);
 var
   NewSlot: integer;
@@ -61,11 +69,52 @@ begin
   begin
     Self.Entities[NewSlot] := aEntity;
     if aEntity.EntityKind = PLAYER_KIND then
+    begin
+
       Self.Player := TPlayer(aEntity);
-    WriteLn('Added entity to slot ', NewSlot);
+
+      WriteLn('Added Player to slot ', NewSlot);
+    end;
+
+    if aEntity.EntityKind = 'e' then
+    begin
+
+      WriteLn('Added Enemy to slot ', NewSlot);
+    end;
+
+    //Self.Player := TPlayer(aEntity);
+    ;
   end
   else
     writeln('failed to add entity in gameengine');
+
+end;
+
+{
+ add an enemy to the array by kind
+}
+procedure TGameEngine.AddEnemy(aWorldX, aWorldY, aEnemyKind: integer);
+var
+  NewSlot: integer;
+  Enemy: TEnemy;
+begin
+  Enemy := TEnemy.Create(Self.Form, aWorldX, aWorldY, aEnemyKind);
+  NewSlot := GetUnusedIndex();
+  if (INVALID_SLOT <> NewSlot) then
+  begin
+    Self.Entities[NewSlot] := Enemy;
+
+
+    if Enemy.EntityKind = 'e' then
+    begin
+
+      WriteLn('Added Enemy to slot ', NewSlot);
+    end;
+
+    ;
+  end
+  else
+    writeln('failed to add enemy in gameengine');
 
 end;
 
@@ -117,8 +166,8 @@ begin
   end;
   Projectile := TProjectile.Create(Form, Player.X + x, Player.Y + y, 0);
   Projectile.SetVelocity(longint(VelX), longint(VelY));
-  Projectile.Width :=w;
-  Projectile.Height:=h;
+  Projectile.Width := w;
+  Projectile.Height := h;
 
   AddEntity(Projectile);
 
@@ -151,8 +200,46 @@ begin
   Result := INVALID_SLOT;
 end;
 
+
+
+{
+Enemy motion and collision update
+}
 procedure TGameEngine.Update();
+var
+  i, j: integer;
+  collided : boolean;
+  PlayerX, PlayerY: integer;
+  EntityA, EntityB: TEntity;
 begin
+  PlayerX := Player.X;
+  PlayerY := Player.Y;
+  //first entity
+  for i := 0 to High(Self.Entities) do
+  begin
+    EntityA := Self.Entities[i];
+
+    if (nil <> EntityA) and (EntityA.IsAlive()) then
+    begin
+      if (EntityA.EntityKind = ENEMY_KIND) then
+         TEnemy(EntityA).SetPlayerTargetPosition(PlayerX,PlayerY);
+      //second entity
+      for j := 0 to High(Self.Entities) do
+      begin
+        EntityB := Self.Entities[j];
+        if (nil <> EntityB) and (EntityB <> EntityA) and (EntityB.IsAlive()) then
+        begin
+           collided := Intersects(EntityA,EntityB);
+           if(collided) then
+           Writeln('Collide entities');
+
+        end;
+
+      end;
+
+    end;
+
+  end;
 
 end;
 
