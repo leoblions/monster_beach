@@ -19,7 +19,7 @@ type
     destructor Destroy; override;
     procedure Update(DeltaTime: Single); virtual; abstract;
     procedure Update(); virtual; abstract;
-    procedure Draw(aPanel: TPanel); virtual; abstract;
+    procedure Draw(aCanvas:TCanvas); virtual; abstract;
     procedure Collide(Other: TEntity); virtual; abstract;
     function IsAlive(): boolean;
     property X: Integer read FX write FX;

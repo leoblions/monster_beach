@@ -29,7 +29,7 @@ uses
   Utils,
   GameEngine,
   ResourceManager,
-  Enemy;
+  Enemy, CSVUtils;
 
 const
   FPS = 60;
@@ -62,7 +62,7 @@ type
   public
     Panel: TPanel;
     Player: TPlayer;
-    HeadsUp: THeadsUp;
+
     TileGrid: TTileGrid;
     GameEngine: TGameEngine;
     Frame: integer;
@@ -81,7 +81,7 @@ type
     // components
     Player := TPlayer.Create(Self, 200, 200, 0);
     TileGrid := TTileGrid.Create(self, 0, 10, 10, 0);
-    HeadsUp := THeadsUp.Create(Self);
+
 
     // window setup
     Caption := 'I SCREAM';
@@ -175,8 +175,8 @@ type
 
   procedure TMainForm.PanelPaint(Sender: TObject);
   var
-    R: TRect;
-    X, Y, i: integer;
+
+    i: integer;
     Entity: TEntity;
     CBuffer, CDraw:TCanvas;
 
@@ -192,6 +192,8 @@ type
 
 
     TileGrid.Draw(CBuffer);
+    GameEngine.Draw(CBuffer);
+
     for i := 0 to High(GameEngine.Entities) do
     begin
       if not Assigned(FBackBuffer) then Exit;
@@ -203,7 +205,7 @@ type
       end;
 
     end;
-    HeadsUp.Draw();
+
 
     CDraw.Draw(0, 0, FBackBuffer);
     // flip the image from buffer to panel
@@ -217,7 +219,7 @@ type
 
   procedure TMainForm.Tick(Sender: TObject);
   var
-    Sender1: TObject;
+
     i: integer;
     Entity: TEntity;
   begin
@@ -234,7 +236,7 @@ type
       end;
 
     end;
-    HeadsUp.Update();
+
 
   end;
 

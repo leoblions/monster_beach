@@ -8,15 +8,20 @@ interface
 
 uses
   Classes, SysUtils, Entity, TileGrid, Forms, Controls, Graphics, Projectile, Player,
-  Dialogs, StdCtrls, LCLType, LCLIntf, ExtCtrls, Enemy,Utils;
+  Dialogs, StdCtrls, LCLType, LCLIntf, ExtCtrls, Enemy,Utils,UHeadsUp;
 
 const
   MAX_ENTITIES = 10;
   INVALID_SLOT = -1;
   PLAYER_KIND = 'p';
+  PROJECTILE_KIND = 'r';
   ENEMY_KIND = 'e';
   PROJECTILE_SPEED_1 = 10;
   PROJECTILE_SPEED_2 = 13;
+  PROJECTILE_DAMAGE = 10;
+  ENEMY_TO_PLAYER_DAMAGE = 4;
+  ENEMY_TO_PLAYER_DAMAGE_COOLDOWN_MAX = 10;
+  PLAYER_MAX_HEALTH = 100;
 
 
 type
@@ -24,17 +29,19 @@ type
 
   TGameEngine = class
   private
-
+   EnemyToPlayerDamageCooldown :Integer;
     function GetUnusedIndex(): integer;
   public
     Form: TForm;
     Panel: TPanel;
     Entities: EntityArray;
+    HeadsUp: THeadsUp;
     Player: TPlayer;
     constructor Create(aForm: TForm; aPanel: TPanel);
     procedure AddEntity(aEntity: TEntity);
     procedure AddEnemy(aWorldX, aWorldY, aEnemyKind: integer);
     procedure Update();
+    procedure Draw(CBuffer:TCanvas);
     procedure OnKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure OnKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure FireProjectile();
@@ -49,7 +56,7 @@ var
 begin
   for i := 0 to High(Entities) do
     Entities[i] := nil;
-
+  Self.HeadsUp := THeadsUp.Create(aForm);
   Self.Form := aForm;
   Self.Panel := aPanel;
 end;
@@ -200,7 +207,10 @@ begin
   Result := INVALID_SLOT;
 end;
 
-
+procedure TGameEngine.Draw(CBuffer:TCanvas);
+begin
+  HeadsUp.Draw(CBuffer);
+end;
 
 {
 Enemy motion and collision update
@@ -232,6 +242,29 @@ begin
            collided := Intersects(EntityA,EntityB);
            if(collided) then
            Writeln('Collide entities');
+           // check if projectile collide entity
+           if(EntityA.EntityKind =ENEMY_KIND )and( EntityB.EntityKind = PROJECTILE_KIND) then
+           begin
+               EntityB.Health := 0;
+               EntityA.Health :=  EntityA.Health - PROJECTILE_DAMAGE;
+           end;
+           if collided and (EntityA.EntityKind =PLAYER_KIND )and( EntityB.EntityKind = ENEMY_KIND) then
+           begin
+               //EntityB.Health := 0;
+             WriteLn('player touched enemy');
+               if Self.EnemyToPlayerDamageCooldown = 0 then
+               begin
+                 EntityA.Health :=  EntityA.Health - ENEMY_TO_PLAYER_DAMAGE;
+                 Writeln('player health ' , EntityA.health);
+                 Self.EnemyToPlayerDamageCooldown:= ENEMY_TO_PLAYER_DAMAGE_COOLDOWN_MAX;
+                 Self.HeadsUp.SetHealthPercent(EntityA.Health  )
+               end
+               else
+               begin
+                 Dec(Self.EnemyToPlayerDamageCooldown,1)
+               end;
+
+           end;
 
         end;
 
@@ -240,6 +273,8 @@ begin
     end;
 
   end;
+
+  HeadsUp.Update();
 
 end;
 
